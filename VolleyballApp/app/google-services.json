@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "484944206965",
+    "firebase_url": "https://volleyball-app-7e444-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "volleyball-app-7e444",
+    "storage_bucket": "volleyball-app-7e444.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484944206965:android:fa0b80f6a0e51f6d886c3c",
+        "android_client_info": {
+          "package_name": "com.example.volleyballapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484944206965-njsmcrf01ed4d138m0m546oos9m0gabe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeO0MuXhZUa5A_76__gsU6PGIlCXxZez8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484944206965-njsmcrf01ed4d138m0m546oos9m0gabe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

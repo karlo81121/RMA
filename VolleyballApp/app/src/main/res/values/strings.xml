@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">VolleyballApp</string>
+
+    <string name="player_first_name_temp">First Name: </string>
+    <string name="player_last_name_temp">Last Name: </string>
+    <string name="player_age_temp">Age: </string>
+    <string name="player_position_temp">Position: </string>
+    <string name="player_national_team_temp">National Team: </string>
+
+    <string name="game_id_temp">ID: </string>
+    <string name="game_first_team_temp">1st Team: </string>
+    <string name="game_second_team_temp">2nd Team: </string>
+    <string name="game_date_played_temp">Date Played: </string>
+    <string name="game_location_temp">Location: </string>
+    <string name="game_played_at_temp">Played At: </string>
+
+    <string name="game_id">1</string>
+    <string name="game_first_team">USA </string>
+    <string name="game_second_team">Brazil </string>
+    <string name="game_date_played">10th October 2023 </string>
+    <string name="game_location">Los Angeles</string>
+    <string name="game_played_at">6 pm</string>
+
+    <string name="player_first_name">Micah</string>
+    <string name="player_last_name">Christenson</string>
+    <string name="player_age">35</string>
+    <string name="player_position">Setter</string>
+    <string name="player_national_team">National team</string>
+
+    <string name="title">MyVolleyball</string>
+    <string name="vnl_title">VNL Players</string>
+    <string name="vnl_game_title">VNL Games</string>
+    <string name="vnl_team_title">VNL Teams</string>
+    <string name="players">CHECK ALL PLAYERS</string>
+    <string name="games">CHECK ALL GAMES</string>
+    <string name="teams">CHECK ALL TEAMS</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+    <string name="alreadyRegistered">Already registered? Sign In!</string>
+    <string name="dontHaveAnAccount">Don\'t have an account? Sign Up!</string>
+    <string name="register">Sign Up</string>
+    <string name="login">Login</string>
+
+    <string name="google_map_api_key">AIzaSyDlG5OUlQkmHVk1Pst8AKLft_y0X1HsIsQ</string>
+
+    <string name="volleyball_image_description">Volleyball Image</string>
+</resources>

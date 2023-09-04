@@ -64,7 +64,6 @@ class savePhotoToGallery : AppCompatActivity() {
             outputStream.flush()
             outputStream.close()
 
-            // Update the media scanner to add the image to the gallery
             MediaStore.Images.Media.insertImage(contentResolver, imageFile.absolutePath, imageFile.name, null)
 
             Toast.makeText(this, "Image saved to gallery", Toast.LENGTH_SHORT).show()
@@ -87,33 +86,25 @@ class savePhotoToGallery : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
         } else {
-            // Permission has already been granted
-            // You can proceed with capturing the image
             dispatchTakePictureIntent()
         }
     }
 
-    // Call this function where you want to request the camera permission
     private fun checkAndRequestCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestCameraPermission()
         } else {
-            // Permission has already been granted
-            // You can proceed with capturing the image
             dispatchTakePictureIntent()
         }
     }
 
-    // Handle permission request results
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, proceed with capturing the image
                 dispatchTakePictureIntent()
             } else {
-                // Permission denied, handle it (show a message, disable functionality, etc.)
-                // You may want to inform the user about why the permission is needed.
+
             }
         }
     }

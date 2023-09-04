@@ -215,14 +215,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun togglePasswordVisibility(textInputEditText: TextInputEditText) {
         isPasswordVisible = !isPasswordVisible
 
-        // Toggle password visibility and update the compound drawable (icon)
         if (isPasswordVisible) {
             textInputEditText.transformationMethod = null
         } else {
             textInputEditText.transformationMethod = PasswordTransformationMethod.getInstance()
         }
 
-        // Reposition the cursor to the end of the text
         textInputEditText.setSelection(textInputEditText.text?.length ?: 0)
     }
 }

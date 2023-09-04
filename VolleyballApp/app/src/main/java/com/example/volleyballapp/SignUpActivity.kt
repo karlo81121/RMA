@@ -19,6 +19,9 @@ import com.example.volleyballapp.databinding.ActivitySignUpBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -180,14 +183,26 @@ class SignUpActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener({
-                        if (it.isSuccessful) {
-                            val intent = Intent(this, SignInActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val intent = Intent(this, SignInActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                val exception = task.exception
+                                if (exception != null) {
+                                    val errorMessage = when (exception) {
+                                        is FirebaseAuthWeakPasswordException -> "Weak password."
+                                        is FirebaseAuthInvalidCredentialsException -> "Invalid email format."
+                                        is FirebaseAuthUserCollisionException -> "User with this email already exists."
+                                        else -> "Sign up failed: ${exception.message}"
+                                    }
+                                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(this, "Sign up failed", Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
-                    })
                 } else {
                     Toast.makeText(this, "Passwords are not matching!", Toast.LENGTH_SHORT).show()
                 }

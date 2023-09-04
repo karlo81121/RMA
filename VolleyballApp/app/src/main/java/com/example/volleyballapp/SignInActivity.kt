@@ -19,6 +19,8 @@ import com.example.volleyballapp.databinding.ActivitySignInBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class SignInActivity : AppCompatActivity() {
 
@@ -138,25 +140,34 @@ class SignInActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         })
 
-        binding.signInButton.setOnClickListener({
+        binding.signInButton.setOnClickListener {
             val email = binding.emailSignIn.text.toString()
             val pass = binding.passSignIn.text.toString()
 
-            if(email.isNotEmpty() && pass.isNotEmpty()){
-                    firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener({
-                        if(it.isSuccessful){
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+                firebaseAuth.signInWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
+                        } else {
+                            val exception = task.exception
+                            if (exception != null) {
+                                val errorMessage = when (exception) {
+                                    is FirebaseAuthInvalidUserException -> "Wrong email."
+                                    is FirebaseAuthInvalidCredentialsException -> "Wrong password."
+                                    else -> "Authentication failed: ${exception.message}"
+                                }
+                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                        else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-                        }
-                    })
-            }
-            else {
+                    }
+            } else {
                 Toast.makeText(this, "Empty fields are not allowed!", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
     private fun togglePasswordVisibility(textInputEditText: TextInputEditText) {

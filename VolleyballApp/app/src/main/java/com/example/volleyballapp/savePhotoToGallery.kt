@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.volleyballapp.databinding.ActivitySavePhotoToGalleryBinding
 import java.io.File
 import java.io.FileOutputStream
 
@@ -22,6 +21,11 @@ class savePhotoToGallery : AppCompatActivity() {
     private val REQUEST_IMAGE_CAPTURE = 1
     private lateinit var imageView: ImageView
     private val CAMERA_PERMISSION_CODE = 101
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

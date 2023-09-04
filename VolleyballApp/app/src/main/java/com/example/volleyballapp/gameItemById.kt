@@ -40,7 +40,6 @@ class gameItemById : AppCompatActivity()  {
     }
 
     private fun initView(){
-        gameId = findViewById(R.id.game_id_id)
         firstTeam = findViewById(R.id.game_first_team_id)
         secondTeam = findViewById(R.id.game_second_team_id)
         datePlayed = findViewById(R.id.game_date_played_id)
@@ -49,7 +48,6 @@ class gameItemById : AppCompatActivity()  {
     }
 
     private fun setValuesToViews(){
-        gameId.text = intent.getStringExtra("gameId")
         firstTeam.text = intent.getStringExtra("firstTeam")
         secondTeam.text = intent.getStringExtra("secondTeam")
         datePlayed.text = intent.getStringExtra("datePlayed")
